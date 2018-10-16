@@ -36,12 +36,12 @@ def output(request):
     for jk in j:
         l.append(jk)
     # mm = open(settings.MEDIA_ROOT)
-
+    print(len(l))
     fs = FileSystemStorage()
-    mm = fs.open(l[0].file_title)
+    mm = fs.open(l[len(l)-1].file_title)
     print(mm)
     df = pd.read_csv(mm)
-    print(df.values.tolist())
+    #print(df.values.tolist())
     i = df.plot().get_figure()
     i.savefig('media//a.png')
     fs = FileSystemStorage()
@@ -50,5 +50,31 @@ def output(request):
     #response = HttpResponse(file,content_type='application')
     #return response
     #return  HttpResponse("<a href = 'input/'>output</a>")
+
+
+def analy(request,pk1):
+
+    j = FileData.objects.get(id=pk1)
+
+    fs = FileSystemStorage()
+    mm = fs.open(j.file_title)
+
+    print(mm)
+    df = pd.read_csv(mm)
+
+    i = df.plot().get_figure()
+    i.savefig('media//a.png')
+    fs = FileSystemStorage()
+
+    return HttpResponse(fs.open('a.png').file,content_type='image/png')
+
+
+def analy_list(request):
+
+    j = FileData.objects.all()
+
+    return render(request,'list_view.html',{'j':j})
+
+
 
 # Create your views here.
