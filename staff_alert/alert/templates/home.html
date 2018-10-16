@@ -1,6 +1,12 @@
 {% extends 'index.html'%}
 
 {% block body %}
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+{% for f in form %}
 
+{{f.name}}:{{f}}<br>
 
+{% endfor %}
+<input type="submit" name="upload" value="upload">
+</form>
 {% endblock %}

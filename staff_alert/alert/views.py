@@ -1,17 +1,54 @@
 from django.shortcuts import render,HttpResponse
 from django.views.generic import TemplateView
+from django.core.files.storage import FileSystemStorage
+from . import form
+from .models import FileData
+import pandas as pd
+
 
 class Index(TemplateView):
 
     template_name = 'index.html'
 
 def input(request):
+    Form = form.FileUpload(request.POST,request.FILES)
+    if 'upload' in request.POST :
 
-    return  HttpResponse("<a href = 'output/'>input</a>")
+        if(Form.is_valid()):
+
+            title = request.POST['file_title']
+            file = request.FILES['myfile']
+            if(file.name[-4:] != ".csv"):
+                return HttpResponse(" upsupported file format ")
+            fs = FileSystemStorage()
+            f_data = fs.save(file.name,file)
+            k = FileData.objects.create(file_title = file.name,file = f_data)
+            k.save()
+
+
+    return render(request,'home.html',{'form':Form})
 
 
 def output(request):
 
-    return  HttpResponse("<a href = 'input/'>output</a>")
+    j = FileData.objects.all()
+    l = []
+    for jk in j:
+        l.append(jk)
+    # mm = open(settings.MEDIA_ROOT)
+
+    fs = FileSystemStorage()
+    mm = fs.open(l[0].file_title)
+    print(mm)
+    df = pd.read_csv(mm)
+    print(df.values.tolist())
+    i = df.plot().get_figure()
+    i.savefig('media//a.png')
+    fs = FileSystemStorage()
+
+    return HttpResponse(fs.open('a.png').file,content_type='image/png')
+    #response = HttpResponse(file,content_type='application')
+    #return response
+    #return  HttpResponse("<a href = 'input/'>output</a>")
 
 # Create your views here.
