@@ -16,13 +16,24 @@ def input(request):
 
         if(Form.is_valid()):
 
+            j = FileData.objects.all()
+            query_list = []
+            for k in j:
+                query_list.append(k.id)
+
+            if  len(query_list)>0:
+                j = FileData.objects.all().last()
+                n = j.id
+            else:
+                n = 1
+
             title = request.POST['file_title']
             file = request.FILES['myfile']
             if(file.name[-4:] != ".csv"):
                 return HttpResponse(" upsupported file format ")
             fs = FileSystemStorage()
-            f_data = fs.save(file.name,file)
-            k = FileData.objects.create(file_title = file.name,file = f_data)
+            f_data = fs.save(file.name[:-4]+str(n)+file.name[-4:],file)
+            k = FileData.objects.create(file_title =file.name[:-4]+str(n)+file.name[-4:],file = f_data)
             k.save()
 
 
@@ -63,10 +74,12 @@ def analy(request,pk1):
     df = pd.read_csv(mm)
 
     i = df.plot().get_figure()
-    i.savefig('media//a.png')
+    i.savefig('alert/static/media/files/a.png')
     fs = FileSystemStorage()
 
-    return HttpResponse(fs.open('a.png').file,content_type='image/png')
+    return render(request,'img.html',)
+
+   # return HttpResponse(fs.open('a.png').file,content_type='image/png')
 
 
 def analy_list(request):
