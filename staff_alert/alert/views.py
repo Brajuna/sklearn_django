@@ -88,6 +88,10 @@ def analy_list(request):
 
     return render(request,'list_view.html',{'j':j})
 
+def algorithms(request):
+
+    return HttpResponse('welcome to algarithms')
+
 
 
 # Create your views here.

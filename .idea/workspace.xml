@@ -3,16 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="57fc01a0-c1f6-4273-a261-8cf16acd1c7e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/staff_alert/alert/static/media/files/a.png" beforeDir="false" afterPath="$PROJECT_DIR$/staff_alert/alert/static/media/files/a.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/staff_alert/alert/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/staff_alert/alert/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/staff_alert/alert/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/staff_alert/alert/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/staff_alert/alert/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/staff_alert/alert/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_alert/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/staff_alert/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_alert/files/numpy-ref-1.11.0.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_alert/media/a.png" beforeDir="false" afterPath="$PROJECT_DIR$/staff_alert/media/a.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_alert/media/bpds.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_alert/media/data.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_alert/media/data1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/staff_alert/media/data1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_alert/media/data_2NKHkJ9.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_alert/media/data_NrZ5QPD.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff_alert/staff_alert/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/staff_alert/staff_alert/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,27 +42,27 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="244" />
-          <entry key="py" value="1888" />
+          <entry key="html" value="282" />
+          <entry key="py" value="1960" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="244" />
-          <entry key="Python" value="1888" />
+          <entry key="HTML" value="282" />
+          <entry key="Python" value="1960" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="csv" value="2" />
-          <entry key="html" value="1" />
+          <entry key="html" value="3" />
           <entry key="png" value="1" />
           <entry key="py" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="1" />
+          <entry key="HTML" value="3" />
           <entry key="Image" value="1" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="Python" value="8" />
@@ -79,10 +73,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/staff_alert/alert/templates/home.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="12" selection-end-line="11" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/staff_alert/alert/static/css/cover.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1870">
               <caret line="110" selection-start-line="110" selection-end-line="110" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/staff_alert/alert/templates/list_view.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="50" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -96,13 +108,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/staff_alert/alert/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="83" selection-start-line="83" selection-end-line="83" />
+            <state relative-caret-position="366">
+              <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
+                <marker date="1539780419055" expanded="true" signature="2321:2375" ph="..." />
               </folding>
             </state>
           </provider>
@@ -111,8 +124,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/staff_alert/alert/templates/img.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+            <state relative-caret-position="102">
+              <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -122,11 +135,11 @@
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/staff_alert/alert/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+            <state relative-caret-position="221">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -134,8 +147,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/staff_alert/alert/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="318">
-              <caret line="27" column="65" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
+            <state relative-caret-position="114">
+              <caret line="28" column="73" selection-start-line="28" selection-start-column="73" selection-end-line="28" selection-end-column="73" />
             </state>
           </provider>
         </entry>
@@ -175,17 +188,17 @@
         <option value="$PROJECT_DIR$/staff_alert/staff/templates/index.html" />
         <option value="$PROJECT_DIR$/staff_alert/staff/views.py" />
         <option value="$PROJECT_DIR$/staff_alert/staff/urls.py" />
-        <option value="$PROJECT_DIR$/staff_alert/alert/templates/index.html" />
         <option value="$PROJECT_DIR$/staff_alert/alert/admin.py" />
         <option value="$PROJECT_DIR$/staff_alert/staff_alert/urls.py" />
         <option value="$PROJECT_DIR$/staff_alert/alert/models.py" />
         <option value="$PROJECT_DIR$/staff_alert/alert/templates/home.html" />
         <option value="$PROJECT_DIR$/staff_alert/alert/form.py" />
-        <option value="$PROJECT_DIR$/staff_alert/alert/urls.py" />
         <option value="$PROJECT_DIR$/staff_alert/alert/templates/list_view.html" />
         <option value="$PROJECT_DIR$/staff_alert/alert/templates/img.html" />
         <option value="$PROJECT_DIR$/staff_alert/staff_alert/settings.py" />
+        <option value="$PROJECT_DIR$/staff_alert/alert/templates/index.html" />
         <option value="$PROJECT_DIR$/staff_alert/alert/views.py" />
+        <option value="$PROJECT_DIR$/staff_alert/alert/urls.py" />
       </list>
     </option>
   </component>
@@ -196,8 +209,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="764" />
-    <option name="y" value="54" />
+    <option name="x" value="634" />
+    <option name="y" value="195" />
     <option name="width" value="734" />
     <option name="height" value="788" />
   </component>
@@ -238,6 +251,13 @@
               <item name="alert" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="media" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sklearn_django" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sklearn_django" type="462c0819:PsiDirectoryNode" />
+              <item name="staff_alert" type="462c0819:PsiDirectoryNode" />
+              <item name="alert" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sklearn_django" type="b2602c69:ProjectViewProjectNode" />
@@ -298,6 +318,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19126074" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -350,20 +371,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/staff_alert/alert/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="12" selection-end-line="11" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/staff_alert/alert/templates/list_view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="50" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/staff_alert/alert/static/css/cover.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1870">
@@ -384,31 +391,10 @@
     <entry file="file://$PROJECT_DIR$/staff_alert/media/bpds.csv">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/staff_alert/alert/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="27" column="65" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Anaconda3/Lib/site-packages/django/core/handlers/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="123" selection-start-line="123" selection-end-line="123" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/staff_alert/alert/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/staff_alert/alert/templates/img.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -422,13 +408,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/staff_alert/alert/templates/img.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staff_alert/alert/templates/list_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="50" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staff_alert/alert/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="12" selection-end-line="11" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staff_alert/alert/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="28" column="73" selection-start-line="28" selection-start-column="73" selection-end-line="28" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/staff_alert/alert/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="83" selection-start-line="83" selection-end-line="83" />
+        <state relative-caret-position="366">
+          <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
+            <marker date="1539780419055" expanded="true" signature="2321:2375" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staff_alert/alert/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>

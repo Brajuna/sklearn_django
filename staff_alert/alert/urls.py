@@ -8,6 +8,7 @@ urlpatterns =[
     path('output',views.output,name='output'),
     path('analy/<int:pk1>',views.analy,name='output'),
     path('analy',views.analy_list,name='output'),
+    path('algorithms',views.algorithms,name='algorithms'),
 ]
 
 
