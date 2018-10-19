@@ -11,7 +11,7 @@ urlpatterns =[
     #path('analy/<int:pk1>',views.analy,name='output'),
     path('analy',views.analy_list,name='output'),
     path('algorithms',views.algorithms,name='algorithms'),
-    path('signup',views.Signup.as_view()),
+    path('signup',views.Signup.as_view(),name='signup'),
     path('lists', views.lists.as_view(),name='lists'),
     path('lists/<int:pk1>',views.analy,name='output'),
     path('account/login/',LoginView.as_view(template_name='account.html',redirect_field_name='lists'),name='login'),
