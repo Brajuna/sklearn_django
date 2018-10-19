@@ -1,8 +1,10 @@
-from django.shortcuts import render,HttpResponse
+from django.shortcuts import render,HttpResponse,redirect
+from django.http import HttpResponseRedirect
 from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
 from django.core.files.storage import FileSystemStorage
 from django.contrib.auth.models import User
+from django.contrib.auth import logout as Logout
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from . import form
@@ -126,3 +128,8 @@ class Signup(FormView):
         return super().form_valid(form)
 
 
+def logout(request):
+
+    Logout(request)
+
+    return HttpResponseRedirect('/')
