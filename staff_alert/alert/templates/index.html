@@ -16,17 +16,18 @@
     <link href="{% static '/css/cover.css' %}" rel="stylesheet">
   </head>
 
-  <body class="text-center" background="{% static '/media/gameof.jpg' %}">
+  <body class="text-center " background="{% static '/media/gameof.jpg' %}">
 
     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
         <div class="inner">
-          <h3 class="masthead-brand">Cover</h3>
-          <nav class="nav nav-masthead justify-content-center">
+          <h3 class="masthead-brand justify-content-left">Cover</h3>
+          <nav class="nav nav-masthead justify-content-center fixed-top">
             <a class="nav-link active" href="{% url 'home' %}">Home</a>
             <a class="nav-link" href="{% url 'input'%}">Upload</a>
-            <a class="nav-link" href="{% url 'output'%}">output</a>
+            <a class="nav-link" href="{% url 'lists'%}">output</a>
               <a class="nav-link" href="{% url 'algorithms'%}">algorithms</a>
+              <a class="nav-link" href="{% url 'algorithms'%}">{{ user.get_username }}</a>
 
           </nav>
         </div>

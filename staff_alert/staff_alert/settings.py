@@ -121,4 +121,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = os.path.join(BASE_DIR,'/alert/')
 MEDIA_ROOT = os.path.join(BASE_DIR,'alert/media/files/')
+LOGIN_REDIRECT_URL='home'
 

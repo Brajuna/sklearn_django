@@ -1,7 +1,9 @@
 {% extends 'index.html'%}
 
 {% block body %}
-
+{% for l in object_list %}
+<a href="/lists/{{l.id}}">{{l.file_title}}</br>
+{% endfor %}
 {% for k in j %}
 <h1><a href="/analy/{{k.id}}">{{k.file_title}}</a></h1>
 {% endfor %}

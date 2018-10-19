@@ -1,14 +1,21 @@
 from django.shortcuts import render,HttpResponse
 from django.views.generic import TemplateView
+from django.views.generic.edit import FormView
 from django.core.files.storage import FileSystemStorage
+from django.contrib.auth.models import User
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 from . import form
 from .models import FileData
+from .form import Signup
 import pandas as pd
 
 
 class Index(TemplateView):
 
     template_name = 'index.html'
+
+
 
 def input(request):
     Form = form.FileUpload(request.POST,request.FILES)
@@ -37,7 +44,7 @@ def input(request):
             k.save()
 
 
-    return render(request,'home.html',{'form':Form})
+    return render(request,'form.html',{'form':Form})
 
 
 def output(request):
@@ -81,6 +88,16 @@ def analy(request,pk1):
 
    # return HttpResponse(fs.open('a.png').file,content_type='image/png')
 
+class lists(ListView):
+
+    model = FileData
+    template_name = 'list_view.html'
+
+class details(DetailView):
+
+    model = FileData
+    template_name = ''
+
 
 def analy_list(request):
 
@@ -92,6 +109,20 @@ def algorithms(request):
 
     return HttpResponse('welcome to algarithms')
 
+class Signup(FormView):
+
+    template_name = 'form.html'
+    form_class = Signup
+    success_url = '/success/'
+
+    def form_valid(self, form):
+
+        print('success')
+
+        user = User.objects.create_user(username=form.cleaned_data['user_name'],password=form.cleaned_data['password'],email=form.cleaned_data['email'])
+        user.firstname = form.cleaned_data['first_name']
+        user.lastname = form.cleaned_data['last_name']
+        user.save()
+        return super().form_valid(form)
 
 
-# Create your views here.
