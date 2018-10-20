@@ -109,7 +109,7 @@ def analy_list(request):
 
 def algorithms(request):
 
-    return HttpResponse('welcome to algarithms')
+    return render(request,'dashboard.html')
 
 class Signup(FormView):
 
