@@ -109,9 +109,7 @@ def analy_list(request):
 
 def algorithms(request):
 
-    obj = FileData.objects.all()
-
-    return render(request,'dashboard.html',{'obj':obj })
+    return render(request,'dashboard.html')
 
 class Signup(FormView):
 
