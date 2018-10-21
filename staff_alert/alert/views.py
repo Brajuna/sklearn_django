@@ -13,6 +13,7 @@ from .form import Signup
 import pandas as pd
 
 
+
 class Index(TemplateView):
 
     template_name = 'index.html'
@@ -21,10 +22,11 @@ class Index(TemplateView):
 
 def input(request):
     Form = form.FileUpload(request.POST,request.FILES)
+
     if 'upload' in request.POST :
 
         if(Form.is_valid()):
-
+            print('formvalied')
             j = FileData.objects.all()
             query_list = []
             for k in j:
@@ -46,7 +48,7 @@ def input(request):
             k.save()
 
 
-    return render(request,'form.html',{'form':Form})
+    return render(request,'form.html',{'form':Form,'name':'upload'})
 
 
 def output(request):
