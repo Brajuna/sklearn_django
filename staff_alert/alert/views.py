@@ -111,7 +111,22 @@ def analy_list(request):
 
 def algorithms(request):
 
-    return render(request,'dashboard.html')
+    objs = FileData.objects.all()
+    return render(request,'dashboard.html',{'objs':objs})
+
+def dash(request,pk):
+
+    objs = FileData.objects.all()
+
+    csv = FileData.objects.get(pk = pk)
+
+    fs = FileSystemStorage()
+    f = fs.open(csv.file_title)
+
+    df = pd.read_csv(f)
+
+
+    return render(request,'dashboard.html',{'objs':objs,'h':list(df),'v':df.values.tolist()})
 
 class Signup(FormView):
 
