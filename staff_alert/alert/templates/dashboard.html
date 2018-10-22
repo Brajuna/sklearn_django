@@ -16,6 +16,8 @@
 
     <!-- Custom styles for this template -->
     <link href="{% static '/css/dashboard.css' %}" rel="stylesheet">
+    <script src ="{% static '/js/jquery.js' %}" language="JavaScript" type="text/javascript"></script>
+     <script src="{% static '/js/Chart.min.js' %}"></script>
   </head>
 
   <body>
@@ -133,8 +135,8 @@
 
             <footer class="mastfoot mt-auto">
         <div class="inner">
-          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
-        </div>
+          <center><p>Staff alert system project for <a href="https://www.linkedin.com/in/suria-sarath">Django project</a>, by <a href="https://plus.google.com/100306029951962499130">@suria</a>.</p>
+          </center></div>
       </footer>
     </div>
 
@@ -155,8 +157,7 @@
     </script>
 
     <!-- Graphs -->
-    <script src ="{% static '/js/jquery.js' %}" language="JavaScript" type="text/javascript"></script>
-     <script src="{% static '/js/Chart.min.js' %}"></script>
+
     <script>
       var ctx = document.getElementById("myChart");
       var myChart = new Chart(ctx, {
