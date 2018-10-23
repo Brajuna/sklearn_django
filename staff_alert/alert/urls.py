@@ -12,7 +12,8 @@ urlpatterns =[
     path('analy',views.analy_list,name='output'),
     path('algorithms/',views.algorithms,name='algorithms'),
     path('algorithms/<int:pk>', views.dash, name='algorithms'),
-    path('algorithms/<int:pk>/predict',views.predict,name = 'predict'),
+    path('algorithms/<int:pk>/predict',views.csv_json,name = 'predict'),
+    path('algorithms/<int:pk>/chart',views.Chart.as_view(),name = 'chart'),
 
     path('signup',views.Signup.as_view(),name='signup'),
     path('lists', views.lists.as_view(),name='lists'),

@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 from .models import FileData
 from .form import Signup
 import pandas as pd
-from django.contrib import sessions
+from chartjs.views.lines import BaseLineChartView
 
 
 
@@ -185,6 +185,44 @@ def csv_json(request,pk):
     df = pd.read_csv(csv)
     print(type(df))
     return JsonResponse({'lables':list(df),'data':df.values.tolist()})
+
+
+class Chart(BaseLineChartView):
+
+    def data(self, request, *args, **kwargs):
+        self.pk = kwargs.get('pk')
+        return self.pk
+
+    def get_datasets(self):
+
+        pk = self.pk
+        print(pk)
+        obj = FileData.objects.get(pk=pk)
+        fs = FileSystemStorage()
+        csv = fs.open(obj.file_title)
+        df = pd.read_csv(csv)
+        return df
+
+
+    def get_labels(self):
+
+
+        return list(self.get_datasets)
+
+    def get_providers(self):
+
+        return list(self.get_datasets)
+
+    def get_data(self):
+
+        return list(self.get_datasets)
+
+
+
+    # other code
+
+    # needed to have an HttpResponse
+
 
 
 
