@@ -173,12 +173,17 @@
     <script>
       var ctx = document.getElementById("myChart");
       var myChart = new Chart(ctx, {
+          var lab = [{% for h1 in h %} "{{h1}}", {% endfor %}"end" ];
+          var da  =[{% for v1 in v %}"{{v1}}",{% endfor %}"0"];
+          lab.pop();
+          da.pop();
+
         type: 'bar',
         data: {
-      {# labels: [{% for h1 in h %} "{{h1}}", {% endfor %}"end" ], #}
-       labels: {{h}},
+
+       labels: lab,
           datasets: [{
-            data: [15339, 21345, 18483, 24003],
+            data: da,
             lineTension: 0,
             backgroundColor: 'transparent',
             borderColor: '#007bff',

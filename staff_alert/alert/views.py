@@ -178,7 +178,7 @@ def logout(request):
 
     return HttpResponseRedirect('/')
 
-def predict(request,pk):
+def csv_json(request,pk):
     obj = FileData.objects.get(pk=pk)
     fs = FileSystemStorage()
     csv = fs.open(obj.file_title)
