@@ -128,11 +128,32 @@ def dash(request,pk):
 
     fs = FileSystemStorage()
     f = fs.open(csv.file_title)
+    f_title = csv.file_title
+    b_path = fs.base_location
 
     df = pd.read_csv(f)
+    v = df.values.tolist()
+    h = list(df)
 
 
-    return render(request,'dashboard.html',{'objs':objs,'h':list(df),'v':df.values.tolist()})
+
+    m_df = []
+    if 'add' in request.POST:
+
+        for k in range(len(h)):
+            m_df.append(request.POST[h[k]])
+        fs = FileSystemStorage()
+        df = pd.DataFrame()
+        df.append(pd.DataFrame([v], columns=h), ignore_index=True)
+        df.append(pd.DataFrame([m_df],columns=h),ignore_index=True)
+        fs.delete(csv.file_title)
+        df.to_csv(fs.base_location+"\\"+ csv.file_title)
+
+
+
+
+
+    return render(request,'dashboard.html',{'objs':objs,'h':h,'v':v})
 
 class Signup(FormView):
 
