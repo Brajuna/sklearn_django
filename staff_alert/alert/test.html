@@ -1,0 +1,35 @@
+<script type="text/javascript">
+var speedCanvas = document.getElementById("data");
+$.get( "/algorithms/76/json", function(json1) {
+
+console.log(json1.dataset[0]);
+
+
+var speedData = {
+  labels: json1.lables,
+  datasets: [{
+    label: json1.dataset[0].label,
+    data: json1.dataset[0].data,
+  }]
+};
+
+var chartOptions = {
+  legend: {
+    display: true,
+    position: 'top',
+    labels: {
+      boxWidth: 80,
+      fontColor: 'black'
+    }
+  }
+};
+
+
+var lineChart = new Chart(speedCanvas, {
+  type: 'bar',
+  data: speedData,
+  options: chartOptions
+});
+});
+
+        </script>

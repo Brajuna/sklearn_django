@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse,redirect
+from django.shortcuts import render,HttpResponse,redirect,get_object_or_404
 from django.http import HttpResponseRedirect,JsonResponse
 from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
@@ -12,9 +12,11 @@ from django.contrib.auth.decorators import login_required
 from .models import FileData
 from .form import Signup
 import pandas as pd
+import numpy as np
 from chartjs.views.lines import BaseLineChartView
 
 
+colors = ['green','red','blue','gray','yellow','gray','orange']
 
 class Index(TemplateView):
 
@@ -80,6 +82,7 @@ def output(request): #not used
 
 def analy(request,pk1):
 
+
     j = FileData.objects.get(id=pk1)
 
     fs = FileSystemStorage()
@@ -115,6 +118,7 @@ def analy_list(request):
 
 @login_required(login_url='/accounts/login/')
 def algorithms(request):
+    print(request.session['pk'])
 
     objs = FileData.objects.all()
     return render(request,'dashboard.html',{'objs':objs})
@@ -126,14 +130,16 @@ def dash(request,pk):
 
     csv = FileData.objects.get(pk = pk)
 
+    request.session["pk"] = pk
+
     fs = FileSystemStorage()
     f = fs.open(csv.file_title)
     f_title = csv.file_title
     b_path = fs.base_location
-
     df = pd.read_csv(f)
     v = df.values.tolist()
     h = list(df)
+    f.close()
 
 
 
@@ -143,11 +149,15 @@ def dash(request,pk):
         for k in range(len(h)):
             m_df.append(request.POST[h[k]])
         fs = FileSystemStorage()
-        df = pd.DataFrame()
-        df.append(pd.DataFrame([v], columns=h), ignore_index=True)
-        df.append(pd.DataFrame([m_df],columns=h),ignore_index=True)
+
+        v.append(m_df)
+        df = pd.DataFrame(v)
+        #df.append(pd.DataFrame([v], columns=h), ignore_index=True)
+        #df.append(pd.DataFrame([m_df],columns=h),ignore_index=True)
         fs.delete(csv.file_title)
-        df.to_csv(fs.base_location+"\\"+ csv.file_title)
+        print(fs.base_location+ f_title)
+
+        df.to_csv(fs.base_location+ f_title)
 
 
 
@@ -183,20 +193,29 @@ def csv_json(request,pk):
     fs = FileSystemStorage()
     csv = fs.open(obj.file_title)
     df = pd.read_csv(csv)
-    print(type(df))
-    return JsonResponse({'lables':list(df),'data':df.values.tolist()})
+    df = df.dropna(axis='columns')
+    print(df.values.tolist())
+    dataset = df.values.tolist()
+
+    label = [x[0] for x in dataset  ]
+    data =[[x[1],x[2]] for x in dataset]
+    data = np.array(data).transpose().tolist()
+    print(data)
+
+
+    return JsonResponse({'lables':label,'dataset':[{"label": list(df),'data':data,'colors':colors[:len(data[0])]}]})
 
 
 class Chart(BaseLineChartView):
 
-    def data(self, request, *args, **kwargs):
-        self.pk = kwargs.get('pk')
-        return self.pk
+    template_name='chart.html'
+    #def get_context_data(self, **kwargs):
+    # Call the base implementation first to get a context
+        #context = super().get_context_data(**kwargs)
+       # self.pk = kwargs['pk']
+       # return self.pk
 
-    def get_datasets(self):
-
-        pk = self.pk
-        print(pk)
+    def objects(pk):
         obj = FileData.objects.get(pk=pk)
         fs = FileSystemStorage()
         csv = fs.open(obj.file_title)
@@ -204,24 +223,52 @@ class Chart(BaseLineChartView):
         return df
 
 
+    #def get_datasets(self):
+
+     #   self.pk = self.kwargs['pk']
+
+
+        return self.pk
+
+
     def get_labels(self):
 
 
-        return list(self.get_datasets)
+
+        self.pk = self.kwargs['pk']
+        obj = FileData.objects.get(pk=self.pk)
+        fs = FileSystemStorage()
+        csv = fs.open(obj.file_title)
+        df = pd.read_csv(csv)
+        #print(type(df))
+
+        return list(df)
 
     def get_providers(self):
 
-        return list(self.get_datasets)
+        return [1,2,3,4,5,6,7,8]
 
     def get_data(self):
+        self.pk = self.kwargs['pk']
+        obj = FileData.objects.get(pk=self.pk)
+        fs = FileSystemStorage()
+        csv = fs.open(obj.file_title)
+        df = pd.read_csv(csv)
+        df = df.dropna(axis='columns')
 
-        return list(self.get_datasets)
+        return df.values.tolist()
 
 
 
+
+
+
+line_chart = TemplateView.as_view(template_name = "chart.html")
+line_json = Chart.as_view()
     # other code
 
-    # needed to have an HttpResponse
+    # needed to have an HttpRespons
+
 
 
 

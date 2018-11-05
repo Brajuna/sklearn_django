@@ -1,0 +1,68 @@
+{% load staticfiles %}
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+    <title>django-chartjs line chart demo</title>
+    <!--[if lte IE 8]>
+    <script src="{% static 'js/excanvas.js' %}"></script>
+    <![endif]-->
+</head>
+<body>
+<h1>Some Line Charts loaded in Ajax!</h1>
+<p id ="data1">data</p>
+
+<canvas id="data" width="500" height="400"></canvas>
+
+<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+<!--<script type="text/javascript" src="{% static 'js/Chart.min.js' %}"></script>-->
+<script type="text/javascript">
+var speedCanvas = document.getElementById("data");
+$.get( "/algorithms/{{ request.session.pk }}/json", function(json1) {
+
+console.log(json1.dataset);
+
+
+var speedData = {
+  labels: json1.lables,
+  datasets: [{
+    label: json1.dataset[0].label[1],
+    data: json1.dataset[0].data[0],
+    backgroundColor:json1.dataset[0].colors
+
+  },
+  {
+    label: json1.dataset[0].label[2],
+    data: json1.dataset[0].data[1],
+    backgroundColor:json1.dataset[0].colors
+  }
+
+  ]
+};
+
+var chartOptions = {
+  legend: {
+    display: true,
+    position: 'top',
+    labels: {
+      boxWidth: 80,
+      fontColor: 'black'
+    }
+  }
+};
+Chart.scaleService.updateScaleDefaults('linear', {
+    ticks: {
+        min: 0
+    }
+});
+
+
+var lineChart = new Chart(speedCanvas, {
+  type: 'bar',
+  data: speedData,
+  options: chartOptions
+});
+});
+
+        </script>
+</body>
+</html>
