@@ -13,7 +13,6 @@ from .models import FileData
 from .form import Signup
 import pandas as pd
 import numpy as np
-from chartjs.views.lines import BaseLineChartView
 
 
 colors = ['green','red','blue','gray','yellow','gray','orange']
@@ -118,7 +117,6 @@ def analy_list(request):
 
 @login_required(login_url='/accounts/login/')
 def algorithms(request):
-    print(request.session['pk'])
 
     objs = FileData.objects.all()
     return render(request,'dashboard.html',{'objs':objs})
@@ -137,8 +135,11 @@ def dash(request,pk):
     f_title = csv.file_title
     b_path = fs.base_location
     df = pd.read_csv(f)
-    v = df.values.tolist()
     h = list(df)
+    v = df.values.tolist()
+
+    #v1 = df.values.tolist().insert(0,h)
+
     f.close()
 
 
@@ -149,9 +150,15 @@ def dash(request,pk):
         for k in range(len(h)):
             m_df.append(request.POST[h[k]])
         fs = FileSystemStorage()
+        print(v)
 
         v.append(m_df)
-        df = pd.DataFrame(v)
+        array = np.array(v).transpose().tolist()
+        pre_dict = {h[i]:array[i] for i in range(len(h))}
+        print(pre_dict)
+
+        df = pd.DataFrame(pre_dict)
+        df = df.set_index(h[0])
         #df.append(pd.DataFrame([v], columns=h), ignore_index=True)
         #df.append(pd.DataFrame([m_df],columns=h),ignore_index=True)
         fs.delete(csv.file_title)
@@ -206,66 +213,7 @@ def csv_json(request,pk):
     return JsonResponse({'lables':label,'dataset':[{"label": list(df),'data':data,'colors':colors[:len(data[0])]}]})
 
 
-class Chart(BaseLineChartView):
 
-    template_name='chart.html'
-    #def get_context_data(self, **kwargs):
-    # Call the base implementation first to get a context
-        #context = super().get_context_data(**kwargs)
-       # self.pk = kwargs['pk']
-       # return self.pk
-
-    def objects(pk):
-        obj = FileData.objects.get(pk=pk)
-        fs = FileSystemStorage()
-        csv = fs.open(obj.file_title)
-        df = pd.read_csv(csv)
-        return df
-
-
-    #def get_datasets(self):
-
-     #   self.pk = self.kwargs['pk']
-
-
-        return self.pk
-
-
-    def get_labels(self):
-
-
-
-        self.pk = self.kwargs['pk']
-        obj = FileData.objects.get(pk=self.pk)
-        fs = FileSystemStorage()
-        csv = fs.open(obj.file_title)
-        df = pd.read_csv(csv)
-        #print(type(df))
-
-        return list(df)
-
-    def get_providers(self):
-
-        return [1,2,3,4,5,6,7,8]
-
-    def get_data(self):
-        self.pk = self.kwargs['pk']
-        obj = FileData.objects.get(pk=self.pk)
-        fs = FileSystemStorage()
-        csv = fs.open(obj.file_title)
-        df = pd.read_csv(csv)
-        df = df.dropna(axis='columns')
-
-        return df.values.tolist()
-
-
-
-
-
-
-line_chart = TemplateView.as_view(template_name = "chart.html")
-line_json = Chart.as_view()
-    # other code
 
     # needed to have an HttpRespons
 
