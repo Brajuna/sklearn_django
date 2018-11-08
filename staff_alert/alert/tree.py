@@ -36,7 +36,7 @@ def de_tree(data,target,predict):
     plt.xlabel("data")
     plt.ylabel("target")
     plt.title("Decision Tree Regression")
-    plt.legend()
-    plt.show()
-
-de_tree([[1,2,1,2],[1.2,3,.8,1.8],[4,3,2.5,3]],[1,1,3],[[3,2,3.5,4]])
+    #plt.legend()
+    #plt.show()
+    return y_3
+#de_tree([[1,2,1,2],[1.2,3,.8,1.8],[4,3,2.5,3]],[1,1,3],[[3,2,3.5,4]])

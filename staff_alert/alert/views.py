@@ -13,6 +13,7 @@ from .models import FileData
 from .form import Signup
 import pandas as pd
 import numpy as np
+from . import tree
 
 
 colors = ['green','red','blue','gray','yellow','gray','orange']
@@ -137,20 +138,13 @@ def dash(request,pk):
     df = pd.read_csv(f)
     h = list(df)
     v = df.values.tolist()
-
-    #v1 = df.values.tolist().insert(0,h)
-
     f.close()
-
-
-
     m_df = []
     if 'add' in request.POST:
 
         for k in range(len(h)):
-            m_df.append(request.POST[h[k]])
+            m_df.append(request.POST[h[k]]) # collect field values
         fs = FileSystemStorage()
-        print(v)
 
         v.append(m_df)
         array = np.array(v).transpose().tolist()
@@ -159,16 +153,19 @@ def dash(request,pk):
 
         df = pd.DataFrame(pre_dict)
         df = df.set_index(h[0])
-        #df.append(pd.DataFrame([v], columns=h), ignore_index=True)
-        #df.append(pd.DataFrame([m_df],columns=h),ignore_index=True)
         fs.delete(csv.file_title)
         print(fs.base_location+ f_title)
 
         df.to_csv(fs.base_location+ f_title)
 
+    if 'pre' in request.POST:
 
-
-
+        for k in range(len(h)-1):
+            m_df.append(request.POST[h[k]])  # collect field values
+        test = [m_df[1:]]
+        data = [x[1:][:-1] for x in df.values.tolist()]
+        target = [[ x[-1]] for x in df.values.tolist()]
+        return HttpResponse(tree.de_tree(data,target,test))
 
     return render(request,'dashboard.html',{'objs':objs,'h':h,'v':v})
 
@@ -205,6 +202,7 @@ def csv_json(request,pk):
     dataset = df.values.tolist()
 
     label = [x[0] for x in dataset  ]
+    print(dataset)
     data =[[x[1],x[2]] for x in dataset]
     data = np.array(data).transpose().tolist()
     print(data)

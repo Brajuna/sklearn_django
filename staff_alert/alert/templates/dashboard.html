@@ -141,9 +141,9 @@
                   <form method="post">{% csrf_token %}
                   <tr>
                   {% for h1 in h %}
-                  <td><input type="text" name="{{h1}}"></td>
+                  <td><input type="text" name="{{h1}}" ></td>
                   {% endfor %}
-                  </tr><tr><td></td><td><input type="submit" value="ADD" name='add'></td></tr></form>
+                  </tr><tr><td></td><td><input type="submit" value="ADD" name='add'></td><td></td><td><input type="submit" value="Predict" name='pre'></td></tr></form>
 
 
 
