@@ -216,8 +216,3 @@ def csv_json(request,pk):
 
 
     # needed to have an HttpRespons
-
-
-
-
-

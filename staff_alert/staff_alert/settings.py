@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # third party
-    'chartjs',
 ]
 
 MIDDLEWARE = [
